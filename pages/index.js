@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Spotify Redesign</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/spotifyicon.png" />
       </Head>
 
       {/* Dashboard */}
