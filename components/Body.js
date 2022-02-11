@@ -1,9 +1,12 @@
-import React from 'react'
+import Search from "./Search";
 
 function Body() {
   return (
-    <div>Body</div>
-  )
+    <section>
+      {/* This is the search bar */}
+      <Search />
+    </section>
+  );
 }
 
-export default Body
+export default Body;
