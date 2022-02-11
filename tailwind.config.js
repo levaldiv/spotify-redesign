@@ -27,6 +27,10 @@ module.exports = {
       sans: ["ui-sans-serif", "system-ui"],
     },
   },
+  variants: {
+    extend: {},
+    scrollbar: ["rounded"],
+  },
   plugins: [
     require("tailwind-scrollbar-hide"),
     require("@tailwindcss/forms"),
