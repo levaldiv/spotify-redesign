@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer components {
+  /* SIDEBAR COMPONENT */
   .sidebarIcon {
     @apply h-6 cursor-pointer text-[#808080];
+  }
+
+  /* SEARCH COMPONENT */
+  .tag {
+    @apply rounded-xl border-2 border-[#484848] bg-[#282828] py-1.5 px-3 text-xs font-bold text-[#CECECE];
   }
 }
