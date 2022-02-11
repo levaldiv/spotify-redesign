@@ -5,9 +5,9 @@ function Sidebar() {
   return (
     <section>
       <Image
-        src="https://rb.gy/xkacau"
-        width={56}
-        height={56}
+        src="https://rb.gy/nw0evo"
+        width={33}
+        height={33}
         objectFit="contain"
       />
     </section>
