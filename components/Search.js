@@ -16,9 +16,9 @@ function Search({ search, setSearch }) {
 
       <div className="ml-auto flex items-center divide-x-2 divide-dotted divide-[#333333]">
         <div className="flex space-x-2 pr-5">
-          <button className="tag">Minimal</button>
+          <button className="tag">EDM</button>
           <button className="tag">House</button>
-          <button className="tag">Minimal</button>
+          <button className="tag">Dubstep</button>
         </div>
 
         <div className="flex items-center space-x-1.5 pl-4 text-[#CECECE]">
