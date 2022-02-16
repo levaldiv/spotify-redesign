@@ -1,4 +1,6 @@
-import React from "react";
+import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
+// import { useRecoilState } from "recoil";
+// import { playingTrackState, playState } from "../atoms/playerAtom";
 
 function Poster({ track }) {
   return (
@@ -11,6 +13,13 @@ function Poster({ track }) {
         alt=""
         className="absolute inset-0 h-full w-full rounded-[50px] object-cover opacity-80 group-hover:opacity-100"
       />
+
+      <div className="absolute inset-x-0 bottom-10 ml-4 flex items-center space-x-3.5">
+        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#15883e] group-hover:bg-[#1db954]">
+          <BsFillPauseFill className="text-xl text-white" />
+          <BsFillPlayFill className="ml-[1px] text-xl text-white" />
+        </div>
+      </div>
     </div>
   );
 }
