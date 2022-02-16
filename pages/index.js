@@ -13,7 +13,7 @@ export default function Home() {
     },
   });
 
-  console.log(session);
+  // console.log(session);
 
   if (status === "loading") {
     return <Loader />;
