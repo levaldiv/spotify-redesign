@@ -2,8 +2,8 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Search from "./Search";
 
-function Body() {
-  const { data: session } = useSessionsion();
+function Body({ spotifyApi }) {
+  const { data: session } = useSession();
   const { accessToken } = session;
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -11,7 +11,35 @@ function Body() {
 
   useEffect(() => {
     if (!accessToken) return;
-  }, []);
+    spotifyApi.setAccessToken(accessToken);
+  }, [accessToken]);
+
+  // Searching
+  useEffect(() => {
+    // if there is no search, return empty results arr
+    if (!search) return setSearchResults([]);
+    // if there is no access token
+    if (!accessToken) return;
+
+    // searching through the tracks
+    spotifyApi.searchTracks(search).then((res) => {
+      // mapping through every single track
+      setSearchResults(
+        res.body.tracks.items.map((track) => {
+          return {
+            // retrieving only the useful info from the track
+            id: track.id,
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: track.album.images[0].url,
+            popularity: track.popularity,
+          };
+        })
+      );
+    });
+  }, [search, accessToken]);
+  console.log(searchResults);
 
   return (
     <section className="ml-24 flex-grow space-y-8 bg-black py-4 md:mr-2.5 md:max-w-6xl">
