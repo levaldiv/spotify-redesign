@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import Poster from "./Poster";
 import Search from "./Search";
 
 function Body({ spotifyApi }) {
@@ -75,7 +76,7 @@ function Body({ spotifyApi }) {
           ? newReleases
               .slice(0, 4)
               .map((track) => (
-                <Poster
+                <Posterer
                   key={track.id}
                   track={track}
                   // chooseTrack={chooseTrack}
