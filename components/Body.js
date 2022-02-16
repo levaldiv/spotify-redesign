@@ -76,7 +76,7 @@ function Body({ spotifyApi }) {
           ? newReleases
               .slice(0, 4)
               .map((track) => (
-                <Posterer
+                <Poster
                   key={track.id}
                   track={track}
                   // chooseTrack={chooseTrack}
