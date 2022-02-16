@@ -1,9 +1,27 @@
 import { getProviders, signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import Loader from "../../components/Loader";
 
 function Signin({ providers }) {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  //   if there is a session, i dont want to show the login screen, instead show the loader
+  useEffect(() => {
+    //   if there is a session
+    if (session) {
+      // route to my homepage
+      router.push("/");
+    }
+    // adding dependency
+  }, [session]);
+
+  // if there is also a session return loading screen
+  if (session) return <Loader />;
+
   return (
     <div className="flex h-screen flex-col items-center space-y-8 bg-black pt-40">
       <Head>
