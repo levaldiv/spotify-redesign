@@ -1,4 +1,3 @@
-import React from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import Body from "./Body";
 import Right from "./Right";
