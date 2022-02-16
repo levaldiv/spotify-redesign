@@ -39,7 +39,28 @@ function Body({ spotifyApi }) {
       );
     });
   }, [search, accessToken]);
-  console.log(searchResults);
+  // console.log(searchResults);
+
+  // fetching the new releases
+  // this is static so it is not changing
+  useEffect(() => {
+    if (!accessToken) return;
+
+    spotifyApi.getNewReleases().then((res) => {
+      setNewReleases(
+        res.body.albums.items.map((track) => {
+          return {
+            id: track.id,
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: track.images[0].url,
+          };
+        })
+      );
+    });
+  }, [accessToken]);
+  // console.log(newReleases);
 
   return (
     <section className="ml-24 flex-grow space-y-8 bg-black py-4 md:mr-2.5 md:max-w-6xl">
@@ -47,7 +68,29 @@ function Body({ spotifyApi }) {
       <Search search={search} setSearch={setSearch} />
 
       {/* Canvas of newest music */}
-      <div className="scrollbar-hide grid h-96 grid-cols-2 gap-x-4 gap-y-8 overflow-y-scroll p-4 py-4 lg:grid-cols-3 xl:grid-cols-4"></div>
+      <div className="scrollbar-hide grid h-96 grid-cols-2 gap-x-4 gap-y-8 overflow-y-scroll p-4 py-4 lg:grid-cols-3 xl:grid-cols-4">
+        {/* showing the new song  releases
+         * Mapping through the track */}
+        {searchResults.length === 0
+          ? newReleases
+              .slice(0, 4)
+              .map((track) => (
+                <Poster
+                  key={track.id}
+                  track={track}
+                  // chooseTrack={chooseTrack}
+                />
+              ))
+          : searchResults
+              .slice(0, 4)
+              .map((track) => (
+                <Poster
+                  key={track.id}
+                  track={track}
+                  // chooseTrack={chooseTrack}
+                />
+              ))}
+      </div>
     </section>
   );
 }
