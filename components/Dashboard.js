@@ -23,7 +23,7 @@ function Dashboard() {
       <Sidebar />
       {/* sending that id to the body */}
       <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
-      <Right />
+      <Right spotifyApi={spotifyApi} chooseTrack={chooseTrack}/>
     </main>
   );
 }
