@@ -1,8 +1,16 @@
 import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
-// import { useRecoilState } from "recoil";
-// import { playingTrackState, playState } from "../atoms/playerAtom";
+import { useRecoilState } from "recoil";
+import { playingTrackState, playState } from "../atoms/playerAtom";
 
-function Poster({ track }) {
+function Poster({ track, chooseTrack }) {
+  const [play, setPlay] = useRecoilState(playState);
+  const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
+
+  const handlePlay = () => {
+    // fcn created insde dashboard componenet
+    chooseTrack(track);
+  };
+
   return (
     <div
       className="group relative mx-auto h-[360px] w-[260px] cursor-pointer overflow-hidden rounded-[50px] text-white/80 transition duration-200 ease-out hover:scale-105 hover:text-white/100"
