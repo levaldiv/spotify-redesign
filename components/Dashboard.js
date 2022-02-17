@@ -11,7 +11,9 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 function Dashboard() {
+  // updating the state globally (also avail globally)
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
+
   const chooseTrack = (track) => {
     setPlayingTrack(track);
   };
@@ -20,7 +22,7 @@ function Dashboard() {
     <main>
       <Sidebar />
       {/* sending that id to the body */}
-      <Body spotifyApi={spotifyApi} />
+      <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
       <Right />
     </main>
   );
