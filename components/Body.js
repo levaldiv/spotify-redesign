@@ -2,8 +2,9 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Poster from "./Poster";
 import Search from "./Search";
+import Track from "./Track";
 
-function Body({ spotifyApi, chooseTrack }) {
+function Body({ chooseTrack, spotifyApi }) {
   const { data: session } = useSession();
   const { accessToken } = session;
   const [search, setSearch] = useState("");
@@ -115,9 +116,31 @@ function Body({ spotifyApi, chooseTrack }) {
         {/* Tracks */}
         <div className="w-full pr-1">
           <h2 className="mb-3 font-bold text-white">
-            {/* showing more new releases on bottom */}
+            {/* showing more new releases on bottomb */}
             {searchResults.length === 0 ? "New Releases" : "Tracks"}
           </h2>
+
+          <div className="scrollbar-thin scrollbar-thumb-gray-600 scrollbar-thumb-rounded hover:scrollbar-thumb-gray-500 h-[1000px] w-[830px] space-y-3 overflow-y-scroll rounded-2xl border-2 border-[#262626] bg-[#0D0D0D] p-3 md:h-96">
+            {searchResults.length === 0
+              ? newReleases
+                  .slice(4, newReleases.length)
+                  .map((track) => (
+                    <Track
+                      key={track.id}
+                      track={track}
+                      chooseTrack={chooseTrack}
+                    />
+                  ))
+              : searchResults
+                  .slice(4, searchResults.length)
+                  .map((track) => (
+                    <Track
+                      key={track.id}
+                      track={track}
+                      chooseTrack={chooseTrack}
+                    />
+                  ))}
+          </div>
         </div>
       </div>
     </section>
