@@ -109,9 +109,15 @@ function Body({ spotifyApi, chooseTrack }) {
             <div className="genre">Techno</div>
           </div>
 
-          <button className="btn">
-            All Genres
-          </button>
+          <button className="btn">All Genres</button>
+        </div>
+
+        {/* Tracks */}
+        <div className="w-full pr-1">
+          <h2 className="mb-3 font-bold text-white">
+            {/* showing more new releases on bottom */}
+            {searchResults.length === 0 ? "New Releases" : "Tracks"}
+          </h2>
         </div>
       </div>
     </section>
