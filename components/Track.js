@@ -10,6 +10,16 @@ function Track({ track, chooseTrack }) {
   const [play, setPlay] = useRecoilState(playState);
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
+  const handlePlay = () => {
+    // fcn created insde dashboard componenet
+    chooseTrack(track);
+
+    // this controls the songs, play/pause
+    if (track.uri === playingTrack.uri) {
+      setPlay(!play);
+    }
+  };
+
   return (
     <div className="group flex cursor-default items-center justify-between space-x-20 rounded-lg py-2 px-4 transition ease-out hover:bg-white/10">
       <div className="flex items-center">
@@ -42,12 +52,12 @@ function Track({ track, chooseTrack }) {
             }`}
             onClick={() => setHasLiked(!hasLiked)}
           />
-          
+
           {track.uri === playingTrack.uri && play ? (
             <>
               <div
                 className="icon absolute -right-0.5 flex h-10 w-10 items-center justify-center rounded-full border border-[#15883e] bg-[#15883e] hover:scale-110"
-                // onClick={handlePlay}
+                onClick={handlePlay}
               >
                 <BsFillPauseFill className="text-xl text-white" />
               </div>
@@ -56,7 +66,7 @@ function Track({ track, chooseTrack }) {
             <>
               <div
                 className="icon absolute -right-0.5 flex h-10 w-10 items-center justify-center rounded-full border border-white/60 hover:scale-110 hover:border-[#15883e] hover:bg-[#15883e]"
-                // onClick={handlePlay}
+                onClick={handlePlay}
               >
                 <BsFillPlayFill className="ml-[1px] text-xl text-white" />
               </div>
