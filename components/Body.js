@@ -123,6 +123,7 @@ function Body({ chooseTrack, spotifyApi }) {
           <div className="scrollbar-thin scrollbar-thumb-gray-600 scrollbar-thumb-rounded hover:scrollbar-thumb-gray-500 h-[1000px] w-[830px] space-y-3 overflow-y-scroll rounded-2xl border-2 border-[#262626] bg-[#0D0D0D] p-3 md:h-96">
             {searchResults.length === 0
               ? newReleases
+                  // shows all the remaining tracks
                   .slice(4, newReleases.length)
                   .map((track) => (
                     <Track
