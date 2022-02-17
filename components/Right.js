@@ -7,12 +7,29 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import RecentlyPlayed from "./RecentlyPlayed";
 
-import React from "react";
-
 function Right({ chooseTrack, spotifyApi }) {
   const { data: session } = useSession();
   const { accessToken } = session;
   const [recentlyPlayed, setRecentlyPlayed] = useState([]);
+
+  // Recently played tracks hook .....
+  useEffect(() => {
+    if (!accessToken) return;
+
+    spotifyApi.getMyRecentlyPlayedTracks({ limit: 20 }).then((res) => {
+      setRecentlyPlayed(
+        res.body.items.map(({ track }) => {
+          return {
+            id: track.id,
+            artist: track.artist[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: track.album.images[0].uri,
+          };
+        })
+      );
+    });
+  }, [accessToken]);
 
   return (
     <section className="space-y-8 p-4 pr-8">
