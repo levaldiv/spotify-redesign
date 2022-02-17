@@ -108,6 +108,10 @@ function Body({ spotifyApi, chooseTrack }) {
             <div className="genre">Country</div>
             <div className="genre">Techno</div>
           </div>
+
+          <button className="w-full rounded-2xl bg-[#1A1A1A] bg-opacity-80 py-3.5 px-4 text-[13px] font-bold text-[#CECECE] transition ease-out hover:bg-opacity-100">
+            All Genres
+          </button>
         </div>
       </div>
     </section>
