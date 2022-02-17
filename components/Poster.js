@@ -9,12 +9,17 @@ function Poster({ track, chooseTrack }) {
   const handlePlay = () => {
     // fcn created insde dashboard componenet
     chooseTrack(track);
+
+    // this controls the songs, play/pause
+    if (track.uri === playingTrack.uri) {
+      setPlay(!play);
+    }
   };
 
   return (
     <div
       className="group relative mx-auto h-[360px] w-[260px] cursor-pointer overflow-hidden rounded-[50px] text-white/80 transition duration-200 ease-out hover:scale-105 hover:text-white/100"
-      // onClick={handlePlay}
+      onClick={handlePlay}
     >
       <img
         src={track.albumUrl}
@@ -24,8 +29,11 @@ function Poster({ track, chooseTrack }) {
 
       <div className="absolute inset-x-0 bottom-10 ml-4 flex items-center space-x-3.5">
         <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#15883e] group-hover:bg-[#1db954]">
-          <BsFillPauseFill className="text-xl text-white" />
-          <BsFillPlayFill className="ml-[1px] text-xl text-white" />
+          {track.uri === playingTrack.uri && play ? (
+            <BsFillPauseFill className="text-xl text-white" />
+          ) : (
+            <BsFillPlayFill className="ml-[1px] text-xl text-white" />
+          )}
         </div>
       </div>
     </div>
