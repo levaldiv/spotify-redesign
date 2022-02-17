@@ -20,4 +20,9 @@
   .tag {
     @apply rounded-xl border-2 border-[#484848] bg-[#282828] py-1.5 px-3 text-xs font-bold text-[#CECECE];
   }
+
+  /* BODY COMPONENT */
+  .genre {
+    @apply cursor-default rounded-xl border border-[#484848] bg-[#101010] py-2.5 px-3.5 text-[11px] font-bold text-[#CECECE];
+  }
 }
