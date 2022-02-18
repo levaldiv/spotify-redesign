@@ -9,7 +9,7 @@ import RecentlyPlayed from "./RecentlyPlayed";
 
 function Right({ chooseTrack, spotifyApi }) {
   const { data: session } = useSession();
-  const { accessToken } = session;
+  const accessToken = session?.accessToken;
   const [recentlyPlayed, setRecentlyPlayed] = useState([]);
 
   // Recently played tracks hook .....
@@ -24,7 +24,7 @@ function Right({ chooseTrack, spotifyApi }) {
             artist: track.artists[0].name,
             title: track.name,
             uri: track.uri,
-            albumUrl: track.album.images[0].uri,
+            albumUrl: track.album.images[0].url,
           };
         })
       );
@@ -34,6 +34,7 @@ function Right({ chooseTrack, spotifyApi }) {
   return (
     <section className="space-y-8 p-4 pr-8">
       <div className="flex items-center justify-between space-x-2">
+        
         {/* creating icons here */}
         <div className="flex h-12 items-center space-x-4 rounded-full border-2 border-[#262626] py-3 px-4">
           <HiOutlineShieldCheck className="text-xl text-[#CCCCCC]" />
@@ -65,7 +66,7 @@ function Right({ chooseTrack, spotifyApi }) {
         </div>
 
         <button className="w-full rounded-2xl bg-[#1A1A1A] bg-opacity-80 py-3.5 px-4 text-[13px] font-bold text-[#CECECE] transition ease-out hover:bg-opacity-100">
-          View all
+          View All
         </button>
       </div>
     </section>
