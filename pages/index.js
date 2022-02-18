@@ -8,6 +8,7 @@ export default function Home() {
   const router = useRouter();
   const { status, data: session } = useSession({
     // This ensures that no one can login without sigining in first
+    required: true,
     onUnauthenticated() {
       router.push("/auth/signin");
     },
