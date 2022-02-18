@@ -1,3 +1,5 @@
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import SpotifyWebApi from "spotify-web-api-node";
 import { playingTrackState } from "../atoms/playerAtom";
@@ -12,7 +14,14 @@ const spotifyApi = new SpotifyWebApi({
 
 function Dashboard() {
   // updating the state globally (also avail globally)
+  const { data: session } = useSession();
+  const accessToken = session?.accessToken;
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
+  const [showPlayer, setShowPlayer] = useState(false);
+
+  useEffect(() => {
+    setShowPlayer(track);
+  }, []);
 
   const chooseTrack = (track) => {
     setPlayingTrack(track);
@@ -23,7 +32,11 @@ function Dashboard() {
       <Sidebar />
       {/* sending that id to the body */}
       <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
-      <Right spotifyApi={spotifyApi} chooseTrack={chooseTrack}/>
+      <Right spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
+
+      <div>
+        
+      </div>
     </main>
   );
 }
