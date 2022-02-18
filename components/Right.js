@@ -21,7 +21,7 @@ function Right({ chooseTrack, spotifyApi }) {
         res.body.items.map(({ track }) => {
           return {
             id: track.id,
-            artist: track.artist[0].name,
+            artist: track.artists[0].name,
             title: track.name,
             uri: track.uri,
             albumUrl: track.album.images[0].uri,
@@ -53,6 +53,20 @@ function Right({ chooseTrack, spotifyApi }) {
           <h4 className="text-sm font-semibold text-white">Recently Played</h4>
           <ViewGridIcon className="h-6 text-[#686868]" />
         </div>
+
+        <div className="scrollbar-hide h-[250px] space-y-4 overflow-x-hidden overflow-y-scroll md:h-[400px]">
+          {recentlyPlayed.map((track, index) => (
+            <RecentlyPlayed
+              key={index}
+              track={track}
+              chooseTrack={chooseTrack}
+            />
+          ))}
+        </div>
+
+        <button className="w-full rounded-2xl bg-[#1A1A1A] bg-opacity-80 py-3.5 px-4 text-[13px] font-bold text-[#CECECE] transition ease-out hover:bg-opacity-100">
+          View all
+        </button>
       </div>
     </section>
   );
