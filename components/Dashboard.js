@@ -28,6 +28,11 @@ function Dashboard() {
     setPlayingTrack(track);
   };
 
+  useEffect(() => {
+    if (!accessToken) return;
+    spotifyApi.setAccessToken(accessToken);
+  }, [accessToken]);
+
   return (
     <main className="flex min-h-screen min-w-max bg-black lg:pb-24">
       <Sidebar />
