@@ -28,7 +28,35 @@ function Player({ accessToken, trackUri }) {
   //   if there is no access token
   if (!accessToken) return null;
 
-  return <div>Player</div>;
+  return (
+    // Premium
+    <SpotifyPlayer
+      styles={{
+        activeColor: "#fff",
+        bgColor: "#181818",
+        color: "#fff",
+        loaderColor: "#fff",
+        sliderColor: "#1cb954",
+        trackArtistColor: "#ccc",
+        trackNameColor: "#fff",
+        height: "70px",
+        sliderTrackColor: "#535353",
+        sliderTrackBorderRadius: "4px",
+        sliderHandleColor: "#fff",
+        errorColor: "#fff",
+      }}
+      token={accessToken}
+      showSaveIcon
+      callback={(state) => {
+        setPlay(state.isPlaying);
+      }}
+      play={play}
+      uris={trackUri ? [trackUri] : []}
+      magnifySliderOnHover={true}
+      autoPlay={true}
+    />
+  );
+  //   directly rendering the player
 }
 
 export default Player;
