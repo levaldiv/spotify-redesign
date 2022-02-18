@@ -1,4 +1,4 @@
-import { ThreeBounce } from "better-react-spinkit";
+// import { ThreeBounce } from "better-react-spinkit";
 import Image from "next/image";
 
 function Loader() {
@@ -13,7 +13,7 @@ function Loader() {
             className="animate-pulse"
           />
         </span>
-        <ThreeBounce size={23} color="#15883e" />
+        {/* <ThreeBounce size={23} color="#15883e" /> */}
       </div>
     </div>
   );
