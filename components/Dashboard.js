@@ -21,7 +21,7 @@ function Dashboard() {
   const [showPlayer, setShowPlayer] = useState(false);
 
   useEffect(() => {
-    setShowPlayer(track);
+    setShowPlayer(true);
   }, []);
 
   const chooseTrack = (track) => {
@@ -35,9 +35,11 @@ function Dashboard() {
       <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
       <Right spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
 
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        <Player accessToken={accessToken} trackUri={playingTrack.uri} />
-      </div>
+      {showPlayer && (
+        <div className="fixed bottom-0 left-0 right-0 z-50">
+          <Player accessToken={accessToken} trackUri={playingTrack.uri} />
+        </div>
+      )}
     </main>
   );
 }

@@ -28,6 +28,7 @@ function Player({ accessToken, trackUri }) {
   //   if there is no access token
   if (!accessToken) return null;
 
+  //   directly rendering the player
   return (
     // Premium
     <SpotifyPlayer
@@ -56,7 +57,6 @@ function Player({ accessToken, trackUri }) {
       autoPlay={true}
     />
   );
-  //   directly rendering the player
 }
 
 export default Player;
