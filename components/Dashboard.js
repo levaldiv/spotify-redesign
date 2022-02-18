@@ -1,11 +1,12 @@
-import { useSession } from "next-auth/react";
-import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import Sidebar from "./Sidebar";
+import { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
+import { useSession } from "next-auth/react";
+import Player from "./Player";
 import { playingTrackState } from "../atoms/playerAtom";
+import { useRecoilState } from "recoil";
 import Body from "./Body";
 import Right from "./Right";
-import Sidebar from "./Sidebar";
 
 const spotifyApi = new SpotifyWebApi({
   // fetching users client id when they are signed in
@@ -35,7 +36,7 @@ function Dashboard() {
       <Right spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
 
       <div>
-        
+        <Player />
       </div>
     </main>
   );
